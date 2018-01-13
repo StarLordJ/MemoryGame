@@ -1,29 +1,46 @@
 body{
     background: radial-gradient(circle, #27793a,  #216932);
     font-family: "Open Sans";
-    color: #FFFFFF
+    color: #FFFFFF;
+    overflow: hidden;
 }
 
 @keyframes _transparent {
     from { opacity: 0; }
     to { opacity: 1;}
    }
-   @-webkit-keyframes _transparent {
+@-webkit-keyframes _transparent {
     from { opacity: 0; }
     to { opacity: 1;}
    }
-   @-moz-keyframes _transparent {
+@-moz-keyframes _transparent {
     from { opacity: 0; }
     to { opacity: 1;}
    }
 
+@keyframes _transparent_reverse {
+    from { opacity: 1; }
+    to { opacity: 0;}
+}
+
+@-webkit-keyframes _transparent_reverse {
+    from { opacity: 1; }
+    to { opacity: 0;}
+}
+
+@-moz-keyframes _transparent_reverse {
+    from { opacity: 1; }
+    to { opacity: 0;}
+}
+
 #application{
     width: 900px;
+    min-width: 900px;
     margin: 0 auto;
     text-align: center;
-    animation: _transparent 2s;
-    -webkit-animation: _transparent 2s;
-    -moz-animation: _transparent 2s;
+    animation: _transparent 1s;
+    -webkit-animation: _transparent 1s;
+    -moz-animation: _transparent 1s;
     margin-top:100px;
 }
 
@@ -48,13 +65,35 @@ body{
     opacity: 1;
 
 }
+.menu{
+    display: flex;
+
+    display: -ms-flexbox;
+
+}
+
+.menu div:nth-child(2) {
+  margin: 0 0 0 auto;
+}
+
 .restart{
-    opacity: 0.85;
-    font-size: 16px;
-    color: white;
+    display: inline-block;
+    opacity: 0.8;
+    font-size: 17px;
+    letter-spacing: 0;
+
+    color: #FFFFFF;
     font-weight: bold;
     background: none;
     border: 0;
+}
+.score, .score_score{
+    font-family: OpenSans-Bold;
+    display: inline-block;
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0.85;
 }
 
 .name{
@@ -67,51 +106,92 @@ body{
     font-size: 28px;
 }
 
-#gameField{
+.gameField, .gameEnd{
     display: none;
-    grid-template-columns: 130px 705px 60px 5px;
-    grid-template-rows: 24px 600px;
-    grid-row-gap: 24px;
 }
 
-#desk{
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    display: grid;
-    grid-template-columns: repeat(6, 130px);
-    grid-template-rows: 180px 180px 180px;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-
-}
-.card{
-    height: 180px;
-    width: 130px;
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-
-}
-.card div {
-    margin: 0;
+.field{
     display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-        border-radius: 6px;
 }
 
-.front, .back{
-    background-size: 130px 180px;
-    background-repeat: no-repeat;
+.desk{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
-.back{
-    transform: rotateY(180deg);
+
+.card {
+  transform-style: preserve-3d;
+  margin-top: 24px;
+
 }
-.card.flipped{
-    transform: rotateY(180deg);
+
+  .flipped .back {
+    transform: rotateY(0deg);
+    cursor: pointer;
+  }
+  .flipped .front {
+      transform: rotateY(180deg);
+  }
+
+.card, .front, .back {
+  width: 130px;
+  height: 180px;
+  border-radius: 5px;
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  transition: 0.5s;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.front {
+  transform: rotateY(0deg);
+}
+
+.back {
+  transform: rotateY(-180deg);
+}
+
+.hide{
+    animation: _transparent_reverse 0.8s;
+    -webkit-animation: _transparent_reverse 0.8s;
+    -moz-animation: _transparent_reverse 0.8s;
+}
+
+.show{
+    animation: _transparent 0.5s;
+    -webkit-animation: _transparent 0.5s;
+    -moz-animation: _transparent 0.5s;
 }
 .hidden{
+    display: none;
+}
+
+.hidden_card{
     visibility: hidden;
 }
