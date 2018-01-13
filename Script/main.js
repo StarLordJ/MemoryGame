@@ -1,38 +1,50 @@
 var playArray = [];
-var gameStart = function (id1, id2) {
-    playArray = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18'];
-    fadeOut(document.querySelector(id1));
-    switch (id1) {
-            case '.start':
-            fadeIn(document.querySelector(id2), ' field');
-            randomizeCards();
-            hideCards(playArray, 5000);
-            break;
+var arrayChoose = [];
+var score;
+var counterRight;
+var allImg = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21',
+            '22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41',
+            '42','43','44','45','46','47','48','49','50','51','52','rubashka','StartGame','EndGame'];
 
-            case '.desk':
-            removeCards();
-            score = 0;
-            counterRight = 0;
-            $(".score_score").text(score);
-            fadeIn(document.querySelector(id2), ' desk');
-            randomizeCards();
-            hideCards(playArray, 5000);
-            break;
 
-            case '.gameEnd':
-            removeCards();
-            score = 0;
-            counterRight = 0;
-            $(".score_score").text(score);
-            fadeIn(document.querySelector(id2), ' field');
-            randomizeCards();
-            hideCards(playArray, 5000);
-            break;
-        default:
+window.onload = function() {
+    fock(allImg);
+    fadeOut(document.getElementById('circleG'));
+    fadeIn(document.querySelector('.start'), ' field');
+}
+
+var preload = function(a){
+        var div = document.getElementById("preloaded");
+        var img = document.createElement('img')
+        img.setAttribute('src','Img/Cards/'+a+'.png');
+        div.appendChild(img);
+}
+
+var fock = function(array){
+    for (var i = 0; i < array.length; i++) {
+        preload(allImg[i]);
     }
 }
 
-var fadeOut = function (element) {
+var gameStart = function (id1, id2) {
+    playArray = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18'];
+    score = 0;
+    counterRight = 0;
+    fadeOut(document.querySelector(id1));
+    $(".score_score").text(score);
+    loadCards(id1, id2);
+}
+
+var loadCards = function(id1, id2){
+    if((id1 == '.desk')||(id1 == '.gameEnd')){
+        removeCards()
+    }
+    fadeIn(document.querySelector(id2), ' field');
+    randomizeCards();
+    hideCards(playArray, 5000);
+}
+
+var fadeOut = function (element, display) {
 element.className += ' hide';
 setTimeout(function(){
     element.className += ' hidden';
@@ -43,10 +55,11 @@ setTimeout(function(){
 
 function fadeIn(element, display){
     setTimeout(function() {
+        element.className += display;
         element.className += ' show';
         element.classList.remove('hidden');
         setTimeout(function(){
-            element.className += display;
+
         element.classList.remove('show');
         ;},550);
     },550);
@@ -124,18 +137,12 @@ var flippingBack = function(id) {
 }
 
 function rightCards(element){
-    setTimeout(function(){
-        element.className += ' hidden_card'
-    }, 100);
+    element.className += ' hidden_card'
     element.className = element.className + ' hide';
-
     element.removeAttribute("onclick");
+}
 
-  }
 
-var arrayChoose = [];
-var score = 0;
-var counterRight = 0;
 
 var flippingFront = function(id) {
     if (arrayChoose.length < 2){
