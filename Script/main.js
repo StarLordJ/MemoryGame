@@ -9,6 +9,8 @@ var allImg = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15',
 
 window.onload = function() {
     fock(allImg);
+}
+window.onload = function() {
     fadeOut(document.getElementById('circleG'));
     fadeIn(document.querySelector('.start'), ' field');
 }
