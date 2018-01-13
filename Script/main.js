@@ -1,76 +1,94 @@
 var playArray = [];
 var gameStart = function (id1, id2) {
-     playArray = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18'];
-    fadeOut(document.getElementById(id1), 10);
+    playArray = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18'];
+    fadeOut(document.querySelector(id1));
     switch (id1) {
-            case 'desk':
+            case '.start':
+            fadeIn(document.querySelector(id2), ' field');
+            randomizeCards();
+            hideCards(playArray, 5000);
+            break;
+
+            case '.desk':
             removeCards();
+            score = 0;
+            counterRight = 0;
+            $(".score_score").text(score);
+            fadeIn(document.querySelector(id2), ' desk');
+            randomizeCards();
+            hideCards(playArray, 5000);
+            break;
+
+            case '.gameEnd':
+            removeCards();
+            score = 0;
+            counterRight = 0;
+            $(".score_score").text(score);
+            fadeIn(document.querySelector(id2), ' field');
+            randomizeCards();
+            hideCards(playArray, 5000);
             break;
         default:
     }
-
-  randomizeCards();
-  fadeIn(document.getElementById(id2), 2000, 'grid');
-  hideCards(playArray, 5000);
 }
 
-var fadeOut = function (element, ms) {
-  var opacity = 1
-  var timer = setInterval(function () {
-    if (opacity <= 0.1) {
-      clearInterval(timer)
-      element.style.display = 'none'
-    }
-    element.style.opacity = opacity
-    opacity -= 0.01
-}, ms/100)
+var fadeOut = function (element) {
+element.className += ' hide';
+setTimeout(function(){
+    element.className += ' hidden';
+    element.classList.remove('hide');
+    element.classList.remove('field')
+}, 250);
+}
+
+function fadeIn(element, display){
+    setTimeout(function() {
+        element.className += ' show';
+        element.classList.remove('hidden');
+        setTimeout(function(){
+            element.className += display;
+        element.classList.remove('show');
+        ;},550);
+    },550);
 }
 
 function removeCards(){
     setTimeout(function(){
-        for(var i = 1; i<=18;i++){
-            document.getElementById(i.toString()).remove();
-        }
-    }, 100);
-}
-
-function fadeIn(element, ms, display){
-    setTimeout(function () {
-        var opacity = 0.1
-        element.style.display = display
-        element.style.opacity = opacity
-        var timer = setInterval(function() {
-             if (opacity >= 1) {
-                 clearInterval(timer)
-             }
-        element.style.opacity = opacity
-        opacity += 0.01
-        }, ms/100)
-    }, 3000)
+    var parent = document.querySelector('.desk');
+    for(var i = 1; i<=18;i++){
+        var child = document.getElementById(i.toString());
+        parent.removeChild(child);
+    }
+},250);
 }
 
  function createCard(atr, a){
-     var parent = document.getElementById('desk');
+     var parent = document.querySelector('.desk');
      var card = document.createElement('div');
-     var front = document.createElement('div');
-     var back = document.createElement('div');
+     var flipper = document.createElement('div');
+     var front = document.createElement('img');
+     var back = document.createElement('img');
      card.id = a+1;
      card.className = 'card';
+     flipper.className = 'flipper';
      front.className = 'front';
      back.className = 'back';
      card.setAttribute("data-myValue", atr)
      card.setAttribute("onclick", "flippingFront(this.id)")
-     front.setAttribute("style", "background-image: url("+atr+");");
-     back.setAttribute("style", "background-image: url(Img/Cards/rubashka.png);");
-     card.appendChild(front);
-     card.appendChild(back);
+     front.setAttribute("src", atr);
+     back.setAttribute("src", "Img/Cards/rubashka.png");
+     flipper.appendChild(front);
+     flipper.appendChild(back);
+     card.appendChild(flipper);
      parent.appendChild(card);
   }
+
 function compareRandom(a, b){
     return Math.random() - 0.5;
 }
 
 function randomizeCards(){
+    setTimeout(function () {
     var cardsArray=[];
     for(var i = 0; i<52;i++){
         var n = i+1;
@@ -88,8 +106,8 @@ function randomizeCards(){
     for(var i = 0; i<18; i++){
         createCard(arr18[i],i);
     }
+}, 550);
 }
-
 
 function hideCards(arr, ms){
     setTimeout(function(){
@@ -99,25 +117,26 @@ function hideCards(arr, ms){
         arr.splice(0, arr.length);
     }, ms)
 }
+
 var flippingBack = function(id) {
   var card = document.getElementById(id);
     card.className = card.className + ' flipped';
-};
+}
 
-function rightCards(element, ms){
-    var opacity = 1
-    var timer = setInterval(function () {
-      if (opacity <= 0.1) {
-        clearInterval(timer)
-        element.className =  'hidden';
-      }
-      element.style.opacity = opacity
-      opacity -= 0.01
-  }, ms/100)
+function rightCards(element){
+    setTimeout(function(){
+        element.className += ' hidden_card'
+    }, 100);
+    element.className = element.className + ' hide';
+
+    element.removeAttribute("onclick");
+
   }
 
-
 var arrayChoose = [];
+var score = 0;
+var counterRight = 0;
+
 var flippingFront = function(id) {
     if (arrayChoose.length < 2){
         var card = document.getElementById(id);
@@ -127,19 +146,36 @@ var flippingFront = function(id) {
         console.log(playArray);
         card.className = 'card';
         if(arrayChoose.length == 2){
-            if(arrayChoose[0] == arrayChoose[1]){
-                setTimeout(function(){
-                for (var i = 0; i<2;i++){
-                    rightCards(document.getElementById(playArray[i]), 100)
+            if(playArray[0] != playArray[1]){
+                if(arrayChoose[0] == arrayChoose[1]){
+                    setTimeout(function(){
+                        for (var i = 0; i<2;i++){
+                            rightCards(document.getElementById(playArray[i]))
+                        }
+                        counterRight += 1;
+                        if(counterRight == 9){
+                            fadeOut(document.querySelector('.gameField'));
+                            fadeIn(document.querySelector('.gameEnd'), ' field');
+                        }
+                        score = score + (9 - counterRight)*42;
+                        $(".score_score").text(score);
+                        console.log(counterRight);
+                        playArray.splice(0,2);
+                    }, 1000);
+                        arrayChoose.splice(0, 2);
+                    }
+                else {
+                    setTimeout(function(){
+                    hideCards(playArray, 1);
+                    arrayChoose.splice(0, 2);
+                    score = score - counterRight*42;
+                    $(".score_score").text(score);
+                    console.log(score)}, 500);
                 }
-                playArray.splice(0,2);
-            }, 1000);
-                arrayChoose.splice(0, 2);
             }
             else {
-                setTimeout(function(){
-                    hideCards(playArray, 1)}, 500);
-                arrayChoose.splice(0, 2);
+                playArray.splice(1,1);
+                arrayChoose.splice(1, 1);
             }
         }
     }
