@@ -5,20 +5,29 @@
         <title>Memory by Boyarnikov</title>
         <link rel="stylesheet" href="Styles/style.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="Script/main.js"></script>
     </head>
     <body>
         <div id="application" data-tid="App">
-            <div id="start">
+            <div class="start">
                 <img src="Img/StartGame.png" alt="Начать игру" class="logo">
                 <h1 class="name">Memory game</h1>
-                <input value="Начать игру" onclick="gameStart('start', 'gameField')" type="button" data-tid="NewGame-startGame" class="butt">
+                <input value="Начать игру" onclick="gameStart('.start', '.gameField')" type="button" data-tid="NewGame-startGame" class="butt">
             </div>
-            <div id="gameField">
-                <input value="Начать заново" onclick="gameStart('desk', 'desk')" type="button" class="restart">
-                <div id="desk"></div>
+            <div class="gameField">
+                <div class="menu">
+                    <input value="Начать заново" onclick="gameStart('.desk', '.desk')" type="button" class="restart">
+                    <div class="score">Очки:</div>
+                    <div class="score_score">0</div>
+                </div>
+                <div class="desk"></div>
             </div>
-            <div id="gameEnd"></div>
+            <div class="gameEnd">
+                <img src="Img/EndGame.png" alt="Поздравляем!" class="logo">
+                <h2 class="name">Поздравляем!<br>Ваш итоговый счёт:</h2>
+                <input value="Ещё раз" onclick="gameStart('.gameEnd', '.gameField')" type="button" data-tid="NewGame-startGame" class="butt">
+            </div>
         </div>
     </body>
 </html>
