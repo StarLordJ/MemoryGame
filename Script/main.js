@@ -4,11 +4,12 @@ var score;
 var counterRight;
 var allImg = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21',
             '22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41',
-            '42','43','44','45','46','47','48','49','50','51','52','rubashka','StartGame','EndGame'];
+            '42','43','44','45','46','47','48','49','50','51','52','rubashka'];
 
-
-window.onload = function() {
-    fock(allImg);
+$( document ).ready(function(array){
+ for (var i = 0; i < 53; i++) {
+        preload(allImg[i]);
+    }
 }
 window.onload = function() {
     fadeOut(document.getElementById('circleG'));
@@ -20,12 +21,6 @@ var preload = function(a){
         var img = document.createElement('img')
         img.setAttribute('src','Img/Cards/'+a+'.png');
         div.appendChild(img);
-}
-
-var fock = function(array){
-    for (var i = 0; i < array.length; i++) {
-        preload(allImg[i]);
-    }
 }
 
 var gameStart = function (id1, id2) {
