@@ -10,7 +10,7 @@ $( document ).ready(function(array){
  for (var i = 0; i < 53; i++) {
         preload(allImg[i]);
     }
-}
+})
 window.onload = function() {
     fadeOut(document.getElementById('circleG'));
     fadeIn(document.querySelector('.start'), ' field');
