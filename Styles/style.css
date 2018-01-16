@@ -1,17 +1,47 @@
+@font-face {
+    font-family: Krungthep;
+    src: url("../Fonts/Krungthep.ttf")
+}
+@font-face {
+    font-family: OpenSans-Bold;
+    src: url("../Fonts/OpenSans-Bold.ttf")
+}
+@font-face {
+    font-family: OpenSans-SemiBold;
+    src: url("../Fonts/OpenSans-SemiBold.ttf")
+}
+
 body{
     background: radial-gradient(circle, #27793a,  #216932);
-    font-family: "Open Sans";
     color: #FFFFFF;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
+    cursor: default;
+    font-family: OpenSans-Bold;
 }
-#circleG{
+
+.blocked{
+    width: 1000px;
+    height: 100vh;
+    position: absolute;
+    z-index: 100;
+    background-color: rgba(0, 125, 215, 0);
+    display: none;
+
+}
+.loading{
 	width:67px;
 	margin:auto;
-    margin-top: 25%;
+    margin-top: 40%;
+    display: none;
 }
 #preloaded{
     position: absolute;
     visibility: hidden;
+    margin-left: -10000px;
+    width: 0;
+    height: 0;
 }
 .circleG{
 	background-color:rgba(255,255,255,0.72);
@@ -156,10 +186,11 @@ body{
     min-width: 900px;
     margin: 0 auto;
     text-align: center;
+    margin-top:100px;
+    z-index: 120;
     animation: _transparent 1s;
     -webkit-animation: _transparent 1s;
     -moz-animation: _transparent 1s;
-    margin-top:100px;
 }
 
 .logo{
@@ -170,7 +201,7 @@ body{
 }
 
 .butt{
-    width: 15%;
+    width: 16%;
     opacity: 0.85;
     background: #ffffff;
     border-radius: 4px;
@@ -179,8 +210,9 @@ body{
     color: #1c7430;
     letter-spacing: 0;
     padding: 10px 20px;
-    font-weight: bold;
     margin: 0 auto;
+    cursor: pointer;
+    font-family: OpenSans-Bold;
 }
 .butt:hover{
     opacity: 1;
@@ -189,6 +221,7 @@ body{
 .menu{
     display: flex;
     display: -ms-flexbox;
+    display: -webkit-flex;
     width: 900px;
 
 }
@@ -202,37 +235,62 @@ body{
     opacity: 0.8;
     font-size: 17px;
     letter-spacing: 0;
-
+    cursor: pointer;
     color: #FFFFFF;
     font-weight: bold;
     background: none;
     border: 0;
+    font-family: OpenSans-SemiBold;
+    letter-spacing: -0.25px;
 }
+.restart:hover{
+    opacity: 1;
+}
+:focus {
+    outline-style: none;
+    outline-width: 0px !important;
+    outline-color: none !important;
+}
+
 .score{
-    font-family: OpenSans-Bold;
     display: inline-block;
     text-align: right;
     font-size: 16px;
-    font-weight: bold;
-    opacity: 0.85;
+    font-weight: normal;
+    opacity: 0.8;
 }
-.score .score_score{
+.menu .score_score{
 font-family: Krungthep;
+opacity: 0.9;
+font-size: 18px;
+color: #FFFFFF;
+letter-spacing: 0;
+width: 6%;
+text-align: right;
 }
 
 .name{
-    margin: 0 0 25px 0;
-    padding: 9px;
-    font-weight: bold;
+    margin: 3% 0 4% 0;
     opacity: 0.85;
-    letter-spacing: 0.2px;
-    text-transform: uppercase;
+
+}
+.start .name{
+text-transform: uppercase;
     font-size: 28px;
+    letter-spacing: 0.2px;
+}
+h2 .name{
+    font-size: 24px;
+    letter-spacing: 0.15px;
+    line-height: 35px;
 }
 
 .gameField, .gameEnd, .start{
     display: none;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+ -webkit-box-direction: normal;
+     -ms-flex-direction: column;
+         flex-direction: column;
 }
 
 .field{
@@ -261,21 +319,24 @@ font-family: Krungthep;
 .card {
   transform-style: preserve-3d;
   margin-top: 24px;
-
 }
 
   .flipped .back {
     transform: rotateY(0deg);
     cursor: pointer;
+    pointer-events: auto;
   }
   .flipped .front {
       transform: rotateY(180deg);
+
+
   }
 
 .card, .front, .back {
   width: 130px;
   height: 180px;
   border-radius: 5px;
+  pointer-events: none;
 }
 
 .flipper {
@@ -302,21 +363,17 @@ font-family: Krungthep;
 }
 
 .hide{
-    animation: _transparent_reverse 0.8s;
-    -webkit-animation: _transparent_reverse 0.8s;
-    -moz-animation: _transparent_reverse 0.8s;
-    visibility: hidden;
+    animation: _transparent_reverse 0.5s;
+    -webkit-animation: _transparent_reverse 0.5s;
+    -moz-animation: _transparent_reverse 0.5s;
 }
 
 .show{
-    animation: _transparent 0.5s;
-    -webkit-animation: _transparent 0.5s;
-    -moz-animation: _transparent 0.5s;
-}
-.hidden{
-    display: none;
+    animation: _transparent 0.8s;
+    -webkit-animation: _transparent 0.8s;
+    -moz-animation: _transparent 0.8s;
 }
 
-.hidden_card{
-    visibility: hidden;
+.show_card{
+    opacity: 0;
 }
