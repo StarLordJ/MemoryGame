@@ -188,9 +188,9 @@ body{
     text-align: center;
     margin-top:100px;
     z-index: 120;
-    animation: _transparent 1s;
-    -webkit-animation: _transparent 1s;
-    -moz-animation: _transparent 1s;
+    animation: _transparent 1.5s;
+    -webkit-animation: _transparent 1.5s;
+    -moz-animation: _transparent 1.5s;
 }
 
 .logo{
