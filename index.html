@@ -9,32 +9,33 @@
         <script type="text/javascript" src="Script/main.js" ></script>
     </head>
     <body>
-        <div id="application" data-tid="App">
-            <div class="loading field">
+        <div id="app" data-tid="App">
+            <div class="loading is-displayed">
                 <div id="circleG_1" class="circleG"></div>
                 <div id="circleG_2" class="circleG"></div>
                 <div id="circleG_3" class="circleG"></div>
             </div>
-            <div class="blocked"></div>
-            <div class="start">
+            <div id='app-start' class="app-start">
                 <img src="Img/StartGame.png" alt="Начать игру" class="logo">
                 <h1 class="name">Memory game</h1>
-                <input value="Начать игру" onclick="gameStart('.start', '.gameField')" type="button" data-tid="NewGame-startGame" class="butt">
+                <input value="Начать игру" type="button" data-tid="NewGame-startGame" class="butt button" >
             </div>
-            <div class="gameField">
-                <div class="menu">
-                    <input value="Начать заново" onclick="gameStart('.desk', '.desk')" type="button" class="restart">
+            <div id='app-game' class="app-game">
+                <div id='game-menu'>
+                    <input value="Начать заново"  type="button" class="restart button" data-tid="Menu-newGame">
                     <div class="score">Очки:</div>
-                    <div class="score_score"></div>
+                    <div class="score_score" data-tid="Menu-scores"></div>
                 </div>
-                <div class="desk field"></div>
+                <div id='deck' class="deck is-displayed" data-tid="Deck"></div>
+                <img src='Img/MusicYes.png' alt='Выключить музыку' class='icon'>
             </div>
-            <div class="gameEnd">
+            <div id='app-end' class="app-end">
                 <img src="Img/EndGame.png" alt="Поздравляем!" class="logo">
-                <h2 class="name">Поздравляем!<br>Ваш итоговый счёт: <span class="score_score"></span></h2>
-                <input value="Ещё раз" onclick="gameStart('.gameEnd', '.gameField')" type="button" data-tid="NewGame-startGame" class="butt">
+                <h2 class="name"></h2>
+                <input value="Ещё раз"  data-tid="NewGame-startGame" class="butt button" data-tid="EndGame-retryGame">
             </div>
+            <div id='preloaded'></div>
         </div>
-        <div id="preloaded"></div>
+        </div>
     </body>
 </html>
