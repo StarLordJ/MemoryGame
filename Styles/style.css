@@ -11,25 +11,23 @@
     src: url("../Fonts/OpenSans-SemiBold.ttf")
 }
 
+html, body{
+  height: 100%;
+}
 body{
     background: radial-gradient(circle, #27793a,  #216932);
     color: #FFFFFF;
-    overflow: hidden;
     margin: 0;
     padding: 0;
     cursor: default;
     font-family: OpenSans-Bold;
+    min-height: 100%;
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    overflow: hidden;
 }
 
-.blocked{
-    width: 1000px;
-    height: 100vh;
-    position: absolute;
-    z-index: 100;
-    background-color: rgba(0, 125, 215, 0);
-    display: none;
-
-}
 .loading{
 	width:67px;
 	margin:auto;
@@ -181,16 +179,15 @@ body{
     to { opacity: 0;}
 }
 
-#application{
+#app{
+    margin:  auto;
     width: 900px;
-    min-width: 900px;
-    margin: 0 auto;
+    height: 650px;
     text-align: center;
-    margin-top:100px;
     z-index: 120;
-    animation: _transparent 1.5s;
-    -webkit-animation: _transparent 1.5s;
-    -moz-animation: _transparent 1.5s;
+    animation: _transparent 1s;
+    -webkit-animation: _transparent 1s;
+    -moz-animation: _transparent 1s;
 }
 
 .logo{
@@ -218,15 +215,14 @@ body{
     opacity: 1;
 
 }
-.menu{
+#game-menu{
     display: flex;
     display: -ms-flexbox;
     display: -webkit-flex;
     width: 900px;
-
 }
 
-.menu div:nth-child(2) {
+#game-menu div:nth-child(2) {
   margin: 0 0 0 auto;
 }
 
@@ -259,7 +255,7 @@ body{
     font-weight: normal;
     opacity: 0.8;
 }
-.menu .score_score{
+#game-menu .score_score{
 font-family: Krungthep;
 opacity: 0.9;
 font-size: 18px;
@@ -270,11 +266,11 @@ text-align: right;
 }
 
 .name{
-    margin: 3% 0 4% 0;
+    margin: 20px 0 40px 0;
     opacity: 0.85;
 
 }
-.start .name{
+.app-start .name{
 text-transform: uppercase;
     font-size: 28px;
     letter-spacing: 0.2px;
@@ -285,7 +281,7 @@ h2 .name{
     line-height: 35px;
 }
 
-.gameField, .gameEnd, .start{
+.app-game, .app-end, .app-start{
     display: none;
     -webkit-box-orient: vertical;
  -webkit-box-direction: normal;
@@ -293,13 +289,14 @@ h2 .name{
          flex-direction: column;
 }
 
-.field{
+
+.is-displayed{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 }
 
-.desk{
+.deck{
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
@@ -318,16 +315,19 @@ h2 .name{
 
 .card {
   transform-style: preserve-3d;
+  -ms-transform-style: none;
   margin-top: 24px;
 }
 
   .flipped .back {
     transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
     cursor: pointer;
     pointer-events: auto;
   }
   .flipped .front {
       transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
 
 
   }
@@ -336,19 +336,22 @@ h2 .name{
   width: 130px;
   height: 180px;
   border-radius: 5px;
-  pointer-events: none;
+
 }
 
 .flipper {
-  transition: 0.6s;
+  transition: all 0.2s ease-in;
   transform-style: preserve-3d;
+  -ms-transform-style: none;
   position: relative;
 }
 
 .front, .back {
   backface-visibility: hidden;
-  transition: 0.5s;
+  transition:all 0.2s ease-in;
+
   transform-style: preserve-3d;
+  -ms-transform-style: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -356,24 +359,41 @@ h2 .name{
 
 .front {
   transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
 }
 
 .back {
   transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  background-image: url("../Img/0.png");
+  background-repeat: no-repeat;
+  background-size: 130px 180px;
+  background-position: center;
 }
 
 .hide{
-    animation: _transparent_reverse 0.5s;
-    -webkit-animation: _transparent_reverse 0.5s;
-    -moz-animation: _transparent_reverse 0.5s;
+    animation: _transparent_reverse 0.4s;
+    -webkit-animation: _transparent_reverse 0.4s;
+    -moz-animation: _transparent_reverse 0.4s;
 }
 
 .show{
-    animation: _transparent 0.8s;
-    -webkit-animation: _transparent 0.8s;
-    -moz-animation: _transparent 0.8s;
+    animation: _transparent 0.4s;
+    -webkit-animation: _transparent 0.4s;
+    -moz-animation: _transparent 0.4s;
 }
 
-.show_card{
+.is-hidden{
     opacity: 0;
+}
+.icon{
+  width: 20px;
+  height: 20px;
+  margin-top: 650px;
+  margin-left: 880px;
+  opacity: 0.75;
+  position: absolute;
+}
+.icon:hover{
+  opacity: 1;
 }
