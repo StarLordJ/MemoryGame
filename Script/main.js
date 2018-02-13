@@ -224,6 +224,7 @@ function delaySound(sr){
 
 function backgroundSound(sr){
   audiob.src = sr;
+  audiob.preload = auto;
   audiob.autoplay = true;
   console.log(document.getElementsByClassName('icon')[0].alt);
   if (document.getElementsByClassName('icon')[0].alt === 'Включить музыку') {
