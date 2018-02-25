@@ -23,6 +23,7 @@ function View() {
     this.controllerAudio = document.querySelector('.icon');
     this.backgroundAudio = '';
     this.animationTime = 300; //зависит от css
+    this.body = document.getElementsByTagName('body')[0];
     
     this.fixOverflow = function() {
         var that = this;
