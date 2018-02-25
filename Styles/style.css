@@ -1,0 +1,317 @@
+@import url('animation.css');
+
+@font-face {
+    font-family: 'Krungthep';
+    src: url('../Fonts/Krungthep.eot');
+    src: url('../Fonts/Krungthep.woff2') format('woff2'),
+         url('../Fonts/Krungthep.woff') format('woff'),
+         url('../Fonts/Krungthep.ttf') format('truetype'),
+         url('../Fonts/Krungthep.svg#Krungthep') format('svg'),
+         url('../Fonts/Krungthep.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url('../Fonts/OpenSans-Bold.eot');
+    src: url('../Fonts/OpenSans-Bold.woff2') format('woff2'),
+       url('../Fonts/OpenSans-Bold.woff') format('woff'),
+       url('../Fonts/OpenSans-Bold.ttf') format('truetype'),
+       url('../Fonts/OpenSans-Bold.svg#OpenSans-Bold') format('svg'),
+       url('../Fonts/OpenSans-Bold.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans-SemiBold';
+    src: url('../Fonts/OpenSans-SemiBold.eot');
+    src: url('../Fonts/OpenSans-SemiBold.woff2') format('woff2'),
+         url('../Fonts/OpenSans-SemiBold.woff') format('woff'),
+         url('../Fonts/OpenSans-SemiBold.ttf') format('truetype'),
+         url('../Fonts/OpenSans-SemiBold.svg#OpenSans-SemiBold') format('svg'),
+         url('../Fonts/OpenSans-SemiBold.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: -webkit-radial-gradient(circle, #27793a,  #216932);
+    background: -o-radial-gradient(circle, #27793a,  #216932);
+    background: radial-gradient(circle, #27793a,  #216932);
+    color: #FFFFFF;
+    cursor: default;
+    font-family: OpenSans-Bold;
+    height: 100vh;
+    display: -webkit-box;
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.preloadContent {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.circleG {
+	  background-color:rgba(255,255,255,0.72);
+	  height: 10px;
+	  width: 10px;
+}
+
+.app {
+    margin: auto;
+    width: 900px;
+    height: 685px;
+    min-width: 900px;
+    min-height: 685px;
+    display: -webkit-box;
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    text-align: center;
+}
+
+.screenLoading {
+    margin: auto;
+	  width: 67px;
+    height: 10px;
+    display: none;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+}
+
+.screenStart__img,
+.screenEnd__img {
+    width: 503px;
+    height: 262px;
+    margin: 0 auto;
+    margin-top: 0;
+}
+
+.screenStart__button,
+.screenEnd__button {
+    width: 16%;
+    opacity: 0.85;
+    background: #ffffff;
+    border-radius: 4px;
+    border: 0px;
+    font-size: 16px;
+    color: #1c7430;
+    letter-spacing: 0;
+    padding: 10px 20px;
+    margin: 0 auto;
+    cursor: pointer;
+    font-family: OpenSans-Bold;
+    text-align: center;
+}
+
+.screenStart__button:hover,
+.screenEnd__button:hover,
+.gameMenu__button:hover {
+    opacity: 1;
+    border: none;
+    outline: none;
+}
+
+.gameMenu {
+    display: -webkit-box;
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    width: 100%;
+}
+
+.gameMenu__button{
+    opacity: 0.8;
+    font-size: 17px;
+    letter-spacing: 0;
+    cursor: pointer;
+    color: #FFFFFF;
+    background: none;
+    border: 0;
+    font-family: OpenSans-SemiBold;
+}
+
+.gameMenu__score{
+    margin: 0 0 0 auto;
+    text-align: right;
+    font-size: 16px;
+    opacity: 0.8;
+    font-family: OpenSans-SemiBold;
+}
+
+.gameMenu__value{
+    font-family: Krungthep;
+    opacity: 0.8;
+    font-size: 18px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    width: 6%;
+    text-align: right;
+}
+
+.screenStart__name {
+    margin: 20px 0 40px 0;
+    opacity: 0.85;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 1.8em;
+    letter-spacing: 0.2px;
+}
+
+.screenEnd__text, .screenEnd__scoreValue {
+    opacity: 0.85;
+    font-size: 24px;
+    letter-spacing: 0.15px;
+    line-height: 35px;
+}
+
+.screenEnd__text {
+    margin: 20px 0 0px 0;
+}
+
+.screenEnd__scoreValue {
+    margin: 5px 0 40px 0;
+}
+
+.screenStart, .screenGame, .screenEnd {
+    height: inherit;
+    width: inherit;
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+}
+
+.screenStart, .screenEnd {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+
+.is-displayed{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.screenGame {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.cardDeck{
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-line-pack: start;
+    align-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    height: 588px;
+}
+
+.card, .front, .back {
+    width: 130px;
+    height: 180px;
+    border-radius: 5px;
+}
+
+.front, .back {
+    -webkit-transition:all 0.2s ease-in;
+    -o-transition:all 0.2s ease-in;
+    transition:all 0.2s ease-in;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front {
+    z-index: 1;
+}
+
+.back{
+    opacity: 0;
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+}
+
+.flipped .back {
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 2;
+    opacity: 1;
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+}
+
+.flipped .front {
+    opacity: 0;
+    -webkit-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.flipper {
+    position: relative;
+    -webkit-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+
+.is-hidden {
+    opacity: 0;
+}
+
+.icon {
+    margin: 0 0 0 auto;
+    width: 20px;
+    height: 20px;
+    opacity: 0.75;
+
+}
+
+.icon:hover {
+    opacity: 2;
+}
+
+.hide {
+    -webkit-animation: fadeOut 0.3s;
+            animation: fadeOut 0.3s;
+}
+
+.show {
+    -webkit-animation: fadeIn 0.3s;
+            animation: fadeIn 0.3s;
+}
