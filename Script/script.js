@@ -23,7 +23,14 @@ function View() {
     this.controllerAudio = document.querySelector('.icon');
     this.backgroundAudio = '';
     this.animationTime = 300; //зависит от css
-
+    
+    this.fixOverflow = function() {
+        var that = this;
+        this.body.classList.add('fixoveflow');
+        setTimeout(function(){
+            that.body.classList.remove('fixoveflow');
+        }, that.animationTime * 2.5);
+    };
     this.changeScreens = function (button) {
         if (button.className === this.buttonStart.className)
             this.swap(this.screenStart, this.screenGame);
@@ -33,6 +40,7 @@ function View() {
             this.swap(this.screenEnd, this.screenGame);
     };
     this.swap = function (screen1, screen2) {
+        this.fixOverflow();
         this.hide(screen1);
         this.show(screen2);
     };
