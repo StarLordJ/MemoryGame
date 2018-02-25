@@ -5,37 +5,40 @@
         <title>Memory by Boyarnikov</title>
         <link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="Styles/style.css" type="text/css">
-        <script src="Script/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="Script/main.js" ></script>
+        <!--[if lte IE 9]>
+        <script type="text/javascript" src="Script/polyfillesForIE8.js" ></script>
+        <link rel="stylesheet" href="Styles/odlIE.css" type="text/css">
+        <![endif]-->
     </head>
     <body>
-        <div id="app" data-tid="App">
-            <div class="loading is-displayed">
+        <div class="app" data-tid="App">
+            <div class="screenLoading is-displayed">
                 <div id="circleG_1" class="circleG"></div>
                 <div id="circleG_2" class="circleG"></div>
                 <div id="circleG_3" class="circleG"></div>
             </div>
-            <div id='app-start' class="app-start">
-                <img src="Img/StartGame.png" alt="Начать игру" class="logo">
-                <h1 class="name">Memory game</h1>
-                <input value="Начать игру" type="button" data-tid="NewGame-startGame" class="butt button" >
+            <div class="screenStart">
+                <img src="Img/StartGame.png" alt="Начать игру" class="screenStart__img">
+                <h1 class="screenStart__name">Memory game</h1>
+                <input value="Начать игру" type="button" data-tid="NewGame-startGame" class="screenStart__button">
             </div>
-            <div id='app-game' class="app-game">
-                <div id='game-menu'>
-                    <input value="Начать заново"  type="button" class="restart button" data-tid="Menu-newGame">
-                    <div class="score">Очки:</div>
-                    <div class="score_score" data-tid="Menu-scores"></div>
+            <div class="screenGame">
+                <div class="gameMenu">
+                    <input value="Начать заново" type="button" class="gameMenu__button" data-tid="Menu-newGame">
+                    <div class="gameMenu__score">Очки:</div>
+                    <div class="gameMenu__value" data-tid="Menu-scores"></div>
                 </div>
-                <div id='deck' class="deck is-displayed" data-tid="Deck"></div>
-                <img src='Img/MusicYes.png' alt='Выключить музыку' class='icon'>
+                <div class="cardDeck is-displayed" data-tid="Deck"></div>
+                <img class="icon" src='Img/MusicYes.png' alt='Turn off'>
             </div>
-            <div id='app-end' class="app-end">
-                <img src="Img/EndGame.png" alt="Поздравляем!" class="logo">
-                <h2 class="name"></h2>
-                <input value="Ещё раз"  data-tid="NewGame-startGame" class="butt button" data-tid="EndGame-retryGame">
+            <div class="screenEnd">
+                <img src="Img/EndGame.png" alt="Конец игры" class="screenEnd__img">
+                <p class="screenEnd__text"></p>
+                <p class="screenEnd__scoreValue"></p>
+                <input value="Ещё раз" type="button" class="screenEnd__button" data-tid="EndGame-retryGame">
             </div>
-            <div id='preloaded'></div>
+            <div class='preloadContent'></div>
         </div>
-        </div>
+        <script src='Script/skript.js'></script>
     </body>
 </html>
