@@ -59,6 +59,10 @@ body {
     flex-direction: column;
 }
 
+.fixoveflow {
+    overflow: hidden;
+}
+
 .preloadContent {
     position: absolute;
     visibility: hidden;
