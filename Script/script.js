@@ -332,7 +332,7 @@ function Controller(model, view, audio) {
         this.flippAllCardsBack();
     };
     this.mainCardFunction = function(event) {
-        var card = event.currentTarget;
+        var card = event.currentTarget.parentNode.parentNode;
         var id = card.id;
         var self = this;
         this.chooseCard(id);
@@ -386,7 +386,7 @@ function Controller(model, view, audio) {
             self.playSound('allcards');
             for (var i = 0; i < self.model.currentCards.length; i++) {
                 var cardObj = self.model.currentCards[i];
-                var cardEl = document.querySelectorAll('.card')[i];
+                var cardEl = document.querySelectorAll('.back')[i];
                 cardEl.addEventListener('click', self.mainCardFunction.bind(self));
                 self.flippingBack(cardObj);
             }
@@ -436,12 +436,12 @@ function Controller(model, view, audio) {
     this.actionWithACards = function(value, array) {
         if (value) {
             this.playSound('Right');
-            for (var i = 0; i < array.length; i++) {
+            for (var i = 0; i < 2; i++) {
                 this.rightCards(array[i]);
             }
         } else {
             this.playSound('flippingback');
-            for (var i = 0; i < array.length; i++) {
+            for (var i = 0; i < 2; i++) {
                 this.flippingBack(array[i]);
             }
         }
