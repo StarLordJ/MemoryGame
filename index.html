@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Memory by Boyarnikov</title>
+        <link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="Styles/style.css" type="text/css">
+        <!--[if lte IE 9]>
+        <script type="text/javascript" src="Script/polyfillesForIE8.js" ></script>
+        <link rel="stylesheet" href="Styles/odlIE.css" type="text/css">
+        <![endif]-->
+    </head>
+    <body>
+        <div class="app" data-tid="App">
+            <div class="loading is-displayed">
+                <div class="loading__circleG loading__circleG--1"></div>
+                <div class="loading__circleG loading__circleG--2"></div>
+                <div class="loading__circleG loading__circleG--3"></div>
+            </div>
+            <div class="screenStart">
+                <img src="Img/StartGame.png" alt="Начать игру" class="screenStart__img">
+                <h1 class="screenStart__name">Memory game</h1>
+                <input value="Начать игру" type="button" data-tid="NewGame-startGame" class="screenStart__button">
+            </div>
+            <div class="screenGame">
+                <div class="gameMenu">
+                    <input value="Начать заново" type="button" class="gameMenu__button" data-tid="Menu-newGame">
+                    <div class="gameMenu__score">Очки:</div>
+                    <div class="gameMenu__value" data-tid="Menu-scores"></div>
+                </div>
+                <div class="cardDeck is-displayed" data-tid="Deck"></div>
+                <div class="musicControls">
+                    <img class="musicControls__audio" src='Img/MusicYes.png' alt='Turn off'>
+                    <img class="musicControls__sounds" src='Img/volumeOn.png' alt='Turn off'>
+                </div>
+            </div>
+            <div class="screenEnd">
+                <img src="Img/EndGame.png" alt="Конец игры" class="screenEnd__img">
+                <p class="screenEnd__text"></p>
+                <p class="screenEnd__scoreValue"></p>
+                <input value="Ещё раз" type="button" class="screenEnd__button" data-tid="EndGame-retryGame">
+            </div>
+        </div>
+        <div class="preloadContent"></div>
+        <script src='Script/script.js'></script>
+    </body>
+</html>
