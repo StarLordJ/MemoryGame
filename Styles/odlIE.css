@@ -1,0 +1,78 @@
+body {
+    background: #27793a;
+}
+
+.app {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -342.5px;
+    margin-left: -450px;
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -5px;
+    margin-left: -33.5px;
+}
+
+.loading__circleG {
+    float: left;
+    margin-left: 10px;
+}
+
+.gameMenu {
+    display: inline-block;
+    width: 890px;
+    height: 40px;
+    float: left;
+}
+
+.screenStart__img, .screenEnd__img {
+    margin-top: 140px;
+}
+
+.gameMenu__button {
+    float: left;
+    margin-left: 5px;
+    margin-left: 10px;
+}
+
+.gameMenu__value {
+    text-align: right;
+    margin-top: 0;
+    float: right;
+    font-weight: bold;
+}
+
+.gameMenu__score {
+    margin-top: 0;
+    position: absolute;
+    margin-left: 770px;
+    font-weight: bold;
+}
+
+
+.cardDeck,
+.is-displayed {
+    display: block;
+}
+
+.card {
+    display: inline-block;
+    margin: 10px;
+}
+
+.musicControls {
+  margin-top: 70px;
+}
+.musicControls__audio, .musicControls__sounds {
+    margin-right: 10px;
+    float: right;
+}
+
+.is-hidden {
+    visibility: hidden;
+}
