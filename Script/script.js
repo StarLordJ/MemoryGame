@@ -318,6 +318,7 @@ function Model() { //все данные игры, которые можно н�
 function Controller(model, view) { //основная логика игры и связывание модели с представлением
     this.view = view;
     this.model = model;
+    var self = this;
 
 /*---------------------------первый запуск приложения. навешивание событий на элементы ----------------------------*/
     this.main = function() {
@@ -331,7 +332,7 @@ function Controller(model, view) { //основная логика игры и �
         this.preloadSounds();
         window.onload = function() {
             this.view.swap(this.view.screenLoading, this.view.screenStart);
-            this.soundDelay('Intro');
+            self.soundDelay('Intro');
         };
     };
     this.buttonEvent = function(event) {
