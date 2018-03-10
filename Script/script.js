@@ -329,7 +329,7 @@ function Controller(model, view) { //основная логика игры и �
         this.view.controlAudio.addEventListener('click', this.controlMusic.bind(this));
         this.view.controlSounds.addEventListener('click', this.controlMusic.bind(this));
         this.preloadSounds();
-        document.addEventListener('DOMContentLoaded', this.gameFadeIn.bind(this));
+        window.onload = this.gameFadeIn();
     };
     this.gameFadeIn = function() {
         this.view.swap(this.view.screenLoading, this.view.screenStart);
